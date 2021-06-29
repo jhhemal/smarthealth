@@ -1,0 +1,36 @@
+{% extends 'users/dashboard/base.html' %}
+{% load crispy_forms_tags %}
+{% block content%}
+
+{% if form.errors %}
+{% for field in form %}
+    {% for error in field.errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endfor %}
+{% for error in form.non_field_errors %}
+    <div class="alert alert-danger">
+        <strong>{{ error|escape }}</strong>
+    </div>
+{% endfor %}
+{% endif %}
+  <div class="text-center py-3" style="background-color: rgb(75, 61, 85);">
+    <h2 class="text-warning">
+        Name: {{ doctor.first_name }} {{ doctor.last_name }}
+        <br>Fee: {{ doctor.schedule.fee }} BDT
+        <br>Payment Number: {{ doctor.payment }}
+        <br>Days: {{ doctor.schedule.wkfrom }} - {{ doctor.schedule.wkto }}
+        <br>Time: {{ doctor.schedule.timefrom }} - {{ doctor.schedule.timeto }}
+    </h2>
+  </div>
+  <form action="" method="POST" class="my-3 p-3 w-75 mx-auto shadow" style="background-color: #eee;">
+    {% csrf_token %}
+    {{ form.trxnid|as_crispy_field }}
+    {{ form.payment_method|as_crispy_field }}
+    {{ form.payment_date|as_crispy_field }}
+    {{ form.amount|as_crispy_field }}
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+{% endblock content %}

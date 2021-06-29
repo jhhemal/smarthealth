@@ -1,0 +1,242 @@
+{% extends 'users/dashboard/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h3 class="text-center text-warning">Doctor Registration</h3>
+    {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+    <div class="my-5">
+        <form action="" method="POST" id="regForm" class="w-75 mx-auto p-5 shadow" style="background-color: #eee;" enctype="multipart/form-data" data-districts-url="{% url 'ajax_load_districts' %}" data-thanas-url="{% url 'ajax_load_thanas' %}" novalidate>
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form.first_name|as_crispy_field }}
+                </div>
+                <div class="col-md-6">
+                    {{ form.last_name|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form.email|as_crispy_field }}
+                </div>
+                <div class="col-md-6">
+                    {{ form.sn|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    {{ form.nid|as_crispy_field }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.mobile|as_crispy_field }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.birthday|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    {{ form.image|as_crispy_field }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.gender|as_crispy_field }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.bg|as_crispy_field }}
+                </div>
+            </div>
+            <br>
+            <fieldset class="border p-2">
+                <legend class="w-auto">Family Details</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form.father_name|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.father_mobile|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.mother_name|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.mother_mobile|as_crispy_field }}
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="border p-2">
+                <legend class="w-auto">Present Address</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form.ps_division|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.ps_district|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.ps_thana|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.ps_union|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.ps_ward|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.ps_village|as_crispy_field }}
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="border p-2">
+                <legend class="w-auto">Permanent Address</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form.pm_division|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.pm_district|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.pm_thana|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.pm_union|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.pm_ward|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.pm_village|as_crispy_field }}
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="border p-2">
+                <legend class="w-auto">Doctor Info</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form.bma|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.payment|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.specialist|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.designation|as_crispy_field }}
+                    </div>
+                </div>
+            </fieldset>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form.password1|as_crispy_field }}
+                </div>
+                <div class="col-md-6">
+                    {{ form.password2|as_crispy_field }}
+                </div>
+            </div>
+            {{ form.verified|as_crispy_field }}
+            {{ form.institute|as_crispy_field }}
+            <br>
+            <button type="submit" class="btn btn-success submit">Sign Up</button>
+        </form>
+    </div>
+    {% endblock content %}
+    
+    <!-- <script>
+        $( function() {
+          $( "#id_birthday" ).datepicker();
+        } );
+    </script> -->
+    {% block script %}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+    <script>
+        $("#id_pm_division").change(function (){
+            var url = $("#regForm").attr("data-districts-url");
+            var divisionId = $(this).val();
+
+            $.ajax({
+                url: url,
+                data: {
+                    'pm_division': divisionId
+                },
+                success: function (data){
+                    $("#id_pm_district").html(data);
+                }
+            });
+        });
+        $("#id_pm_district").change(function (){
+            var url = $("#regForm").attr("data-thanas-url");
+            var districtId = $(this).val();
+
+            $.ajax({
+                url: url,
+                data: {
+                    'pm_district': districtId
+                },
+                success: function (data){
+                    $("#id_pm_thana").html(data);
+                }
+            });
+        });
+
+        $("#id_ps_division").change(function (){
+            var url = $("#regForm").attr("data-districts-url");
+            var divisionId = $(this).val();
+
+            $.ajax({
+                url: url,
+                data: {
+                    'ps_division': divisionId
+                },
+                success: function (data){
+                    $("#id_ps_district").html(data);
+                }
+            });
+        });
+        $("#id_ps_district").change(function (){
+            var url = $("#regForm").attr("data-thanas-url");
+            var districtId = $(this).val();
+
+            $.ajax({
+                url: url,
+                data: {
+                    'ps_district': districtId
+                },
+                success: function (data){
+                    $("#id_ps_thana").html(data);
+                }
+            });
+        });
+    </script>
+    <script>
+        // const date = document.getElementById('id_mobile');
+        const date = document.getElementById('id_birthday')
+        const sn = document.getElementById('id_sn')
+        
+        date.addEventListener('change', () => {
+            let dv = date.value.split("-").join("");
+            let rand = []
+            for(let i=0; i<4;i++){
+                rand.push(Math.floor(Math.random()*10));
+            }
+            rand = rand.join("")
+            sn.value = dv+rand;
+        })
+        console.log(sn.value)
+    </script>
+    {% endblock script %}

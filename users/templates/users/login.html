@@ -1,0 +1,51 @@
+{% extends 'users/dashboard/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="row my-5">
+        <div class="col-sm-8 col-md-6 col-lg-3 mx-auto">
+            <div class="card card-signin my-5 shadow bg-light">
+                <div class="card-body">
+                <h5 class="card-title text-center">Sign In</h5>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-dismissible alert-{{ message.tags }}">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{ message|safe }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <form class="form-signin" method="POST">
+                    {% csrf_token %}
+                    <div class="form-label-group">
+                    {{ form.username|as_crispy_field }}
+                    </div>
+    
+                    <div class="form-label-group">
+                    {{ form.password|as_crispy_field }}
+                    </div>
+                    <button class="btn btn-success btn-block text-uppercase mt-2" type="submit">Sign in</button>
+                    <div class="text-muted mt-2">
+                        <a href="{% url 'password_reset' %}">Forgot Your Password?</a>
+                    </div>
+                </form>
+                <!-- <h6 class="card-footer text-center text-primary my-2">Created by Tanjin</h6> -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

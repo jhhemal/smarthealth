@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Health SOlution by Daffodil CSE Depatment</title>
+
+
+
+<!-- FONTS ONLINE -->
+
+
+<!--MAIN STYLE-->
+<link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+<link href="{% static 'dc/css/main.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'dc/css/style.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'dc/css/responsive.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'dc/css/animate.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'dc/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'dc/css/ionicons.min.css' %}" rel="stylesheet" type="text/css">
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.6.2/tinymce.min.js" integrity="sha512-sOO7yng64iQzv/uLE8sCEhca7yet+D6vPGDEdXCqit1elBUAJD1jYIYqz0ov9HMd/k30e4UVFAovmSG92E995A==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+{% block style %}
+
+{% endblock style %}
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary p-3" style="font-size: 18px; font-weight: 500;">
+    <div class="container-fluid d-flex justify-content-between">
+      <a class="navbar-brand" href="#"><img src="/media/images/main-logo.png" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li> -->
+          {% if request.user.is_authenticated %}
+            {% if request.user.user_type == 1 or request.user.user_type == 4  or request.user.user_type == 5 %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'admind' %}">Dashobaord</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'search' %}">Search Doctor</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'user-update' request.user.id %}">Update Account</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'otp-gen' %}">Update Locked Field</a></li>
+            {% if request.user.user_type == 2 %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'search-patient' %}">Search Patient</a></li>
+            <li class="nav-item"><a href="{% url 'schedule-create' user.id %}" class="nav-link">Add Schedule</a></li>
+            {% endif %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'user-profile' request.user.id %}">Profile</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+            {% endif %}
+            {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Registration</a></li>
+          {% endif %}
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<!-- Page Wrap ===========================================-->
+<div id="wrap"> 
+  
+  <!-- HEADER ===========================================-->
+  
+  
+  <!--======= BANNER =========-->
+  {% block banner %}
+  {% endblock banner %}  
+  <!--======= CONTENT =========-->
+    {% block content %}
+    {% endblock content %}
+  
+  
+  <!--======= FOOTER =========-->
+  <footer>
+    <div class="container"> 
+      
+      <!-- Row -->
+      <div class="row"> 
+        
+        <!-- Latest Tweet -->
+        <div class="col-md-3 py-5">
+          
+        </div>
+        
+        <!-- About Us -->
+        <div class="col-md-6">
+          <div class="small-info"> <img src="/media/images/main-logo.png" alt="">
+            <p>We work in a friendly and efficient using the latest technologies and sharing our expertise to make a diagnosis and implement cutting-edge therapies.</p>
+            
+            <!-- News Letter -->
+            <h5>register newsletter</h5>
+            <form>
+              <input type="email" placeholder="Enter your email here" required>
+              <button type="submit"> Subscribe</button>
+            </form>
+          </div>
+        </div>
+        
+        <!-- Patient Guide -->
+        <div class="col-md-3">
+          
+        </div>
+      </div>
+    </div>
+    
+    <!-- Rights -->
+    <div class="rights">
+      <p>© 2021 . Made with ❤️ by DIU </p>
+    </div>
+  </footer>
+</div>
+<!-- Wrap End --> 
+{% block script %}
+
+{% endblock script %}
+
+<script src="{% static 'dc/js/jquery-1.11.0.min.js' %}"></script> 
+<script src="{% static 'dc/js/bootstrap.min.js' %}"></script> 
+<script src="{% static 'dc/js/own-menu.js' %}"></script> 
+<script src="{% static 'dc/js/owl.carousel.min.js' %}"></script> 
+<script src="{% static 'dc/js/jquery.superslides.js' %}"></script> 
+<script src="{% static 'dc/js/masonry.pkgd.min.js' %}"></script> 
+<script src="{% static 'dc/js/jquery.stellar.min.js' %}"></script> 
+<script src="{% static 'dc/js/jquery-ui-1.10.3.custom.js' %}"></script> 
+<script src="{% static 'dc/js/jquery.magnific-popup.min.js' %}"></script> 
+<script src="{% static 'dc/js/jquery.isotope.min.js' %}"></script> 
+<script src="{% static 'dc/js/jquery.flexslider-min.js' %}"></script> 
+<script src="{% static 'dc/js/appointment.js' %}"></script> 
+<script src="{% static 'dc/js/jquery.downCount.js' %}"></script> 
+<script src="{% static 'dc/js/counter.js' %}"></script> 
+<script src="{% static 'dc/js/main.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/scripts.js' %}"></script>
+<script src="https://cdn.tiny.cloud/1/a8emwfvssewo3grbdmyc9818c3zgvlh6l4pt39d6zdjfov9k/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>tinymce.init({selector:'textarea'});</script>
+</body>
+</html>

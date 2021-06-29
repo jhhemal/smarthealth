@@ -1,0 +1,48 @@
+{% extends 'users/dashboard/base.html' %}
+
+{% block content %}
+<div class="my-5 w-75 mx-auto bg-light shadow p-4">
+        <h4>Enter The OTP sent to your mail</h4>
+    <p style="display: none;" class="uid">{{ request.user.id }}</p>
+    <div class="row my-2">
+        <div class="col-md-4">
+            <input type="text" class="form-control otp">
+        </div>
+        {% if request.user.user_type == 3 %}
+        <a href="{% url 'user-update-ex' request.user.id %}" class="btn btn-warning" style="display: none;">Submit</a>
+        
+        {% elif request.user.user_type == 2 %}
+        <a href="{% url 'doctor-update-ex' request.user.id %}" class="btn btn-warning" style="display: none;">Submit</a>
+        {% endif %}
+    </div>
+    </div>
+    
+    
+
+    <script>
+        otp = document.querySelector('.otp');
+        uid = document.querySelector('.uid');
+        btn = document.querySelector('.btn');
+        const otpurl = "http://127.0.0.1:8000/api/otp/";
+
+        const Get = (yourUrl) =>{
+            var Httpreq = new XMLHttpRequest(); // a new request
+            Httpreq.open("GET",yourUrl,false);
+            Httpreq.send(null);
+            //console.log(Httpreq.responseText)
+            //console.log(Httpreq.responseText.updateTime)
+            return Httpreq.responseText;
+        }
+        const otpdata = JSON.parse(Get(otpurl));
+        otp.addEventListener('keyup', () =>{
+            n = otp.value;
+            for(let i=0; i< otpdata.length; i++){
+                if(n === otpdata[i].number){
+                    // btn.classList.remove("disabled");
+                    btn.style.display = "inline";
+                    // console.log(true)
+                }
+            }
+        })
+    </script>
+{% endblock content %}

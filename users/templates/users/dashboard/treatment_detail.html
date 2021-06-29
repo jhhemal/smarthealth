@@ -1,0 +1,68 @@
+{% extends 'users/dashboard/base.html' %}
+
+{% block content %}
+
+
+    <br>
+    <style>
+        .btns{
+          position: fixed;
+          left: 80%;
+        }
+        @media print {
+            body * { visibility: hidden; }
+            #printcontent * { visibility: visible; padding-left: 100px; font-size: 18px;}
+            #printcontent { position: absolute; top: 0; left: 0;}
+            .print{
+                width: 80% !important;
+                margin: 0 !important;
+                margin-left: 50px !important;
+            }
+        }
+        .print{
+            width: 60%;
+        }
+    </style>
+    <a href="" onclick="window.print()" class="btns btn btn-info">Print</a>
+    <div id="printcontent" class="mx-auto">
+        <div class="mx-auto print">
+            <h1>Medicine Or Solution</h1>
+            <br>
+        {{ pr.prescription|safe }}
+        </div>
+        
+    </div>
+    
+    <hr>
+    <h2 class="text-center text-warning">Report Section</h2>
+    <p class="text-center">
+        {% if pr.patient.id == request.user.id %}
+        <a href="{% url 'report-create' pr.id %}" class="btn btn-success">Add Report</a>
+        {% endif %}
+    
+    </p>
+    <h4 class="text-center">Previous Report Files</h4>
+    <div class="row my-3 shadow bg-light mx-auto" style="width: 85%;">
+        {% for r in pr.test_set.all %}
+        <div class="col-md-4 bg-light shadow p-3">
+            <h3>{{ r.title }}</h3>
+            <img src="{{ r.reportimg.url }}" alt="" class="my-3 img-fluid" width="400px">
+            {% if request.user.user_type == 2 %}
+            <a href="{% url 'comment-create' r.id %}" class="btn btn-success">Add Comment</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <h4 class="text-center">Comments</h4>
+    <div class="row my-3 shadow bg-light mx-auto" style="width: 85%;">
+        {% for c in pr.comment_set.all %}
+        <div class="col-md-4 bg-light shadow p-3">
+            <h3>{{ c.doctor.first_name c.doctor.last_name }}</h3>
+            <p>{{ c.comment }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    
+    {{ pr.test.reportpdf }}
+    
+{% endblock content %}

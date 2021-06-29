@@ -1,0 +1,7 @@
+{% autoescape off %}  
+Hi {{ user.first_name }} {{ user.last_name }},
+Your LOGIN ID is : {{ user.sn }}
+OTP : {{ otp }}
+Please Type the Otp on the form to access update.
+If you think, it's not you, then just ignore this email.  
+{% endautoescape %}

@@ -1,0 +1,239 @@
+{% extends 'users/dashboard/base.html' %}
+
+{% block banner %}
+<div id="banner" class="full-screen">
+  <div class="main-bnr">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 no-padding"> 
+          
+          <!--======= BANNER TEXT =========-->
+          <div class="main-bnr-text">
+            <h5>Hello, We are Team DIU!!</h5>
+            <h1>We Care About Your Health</h1>
+            <p>During the pendamic situtation we feel that consulting a doctor is too hard without chamber. That's why dqn't worry about that we are her to assist you. You can get treatment online from here.</p>
+            <!--======= BUTTON =========--> 
+            <a href="{% url 'search' %}" class="btn btn-info">Search Doctor</a> </div>
+        </div>
+        
+        <!--======= BANNER BACKGROUND IMAGE =========-->
+        
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock banner %}
+{% block content %}
+<!--======= WHY CHOOSE US =========-->
+<div id="why-choose">
+  <div class="container">
+    <div class="row"> 
+      
+      <!--Tittle-->
+      <div class="col-lg-3">
+        <div class="tittle">
+          <h2>Why Choose Us</h2>
+        </div>
+      </div>
+      
+      <!-- Services Row -->
+      <div class="col-lg-9">
+        <ul class="row">
+          
+          <!-- Section -->
+          <li class="col-sm-4">
+            <h6>Medical Counseling</h6>
+            <p>Cum sociis natoque penatibus et magnis dis parturient montesmus. Nunc finibus sit amet gravida. </p>
+          </li>
+          <!-- Section -->
+          <li class="col-sm-4">
+            <h6>Professional services</h6>
+            <p>Cum sociis natoque penatibus et magnis dis parturient montesmus. Nunc finibus sit amet gravida. </p>
+          </li>
+          <!-- Section -->
+          <li class="col-sm-4">
+            <h6>24 Hours service</h6>
+            <p>Cum sociis natoque penatibus et magnis dis parturient montesmus. Nunc finibus sit amet gravida. </p>
+          </li>
+        </ul>
+        <ul class="row">
+          
+          <!-- Section -->
+          <li class="col-sm-4">
+            <h6>Qualified medical facilities</h6>
+            <p>Cum sociis natoque penatibus et magnis dis parturient montesmus. Nunc finibus sit amet gravida. </p>
+          </li>
+          <!-- Section -->
+          <li class="col-sm-4">
+            <h6>Top level doctors</h6>
+            <p>Cum sociis natoque penatibus et magnis dis parturient montesmus. Nunc finibus sit amet gravida. </p>
+          </li>
+          <!-- Section -->
+          <li class="col-sm-4">
+            <h6>Dedicated patient care</h6>
+            <p>Cum sociis natoque penatibus et magnis dis parturient montesmus. Nunc finibus sit amet gravida. </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Image Responsive -->
+  <div class="text-center"> <img class="img-responsive" src="/media/images/why-choose-img.jpg" alt=""> </div>
+</div>
+
+<!--======= SERVICES =========-->
+<section id="services" style="margin-top: 50px; margin-bottom: 50px;">
+  <div class="container-fluid">
+    <ul class="row">
+      <li class="col-md-3">
+        <h5>Heart  Rate</h5>
+        <p>Duis autem vel eum iriure dolor in hendr erit in vulpt feugiat nulla facilisis utate velit esse molestie consequat</p>
+      </li>
+      <li class="col-md-3">
+        <h5>Medical Counseling</h5>
+        <p>Duis autem vel eum iriure dolor in hendr erit in vulpt feugiat nulla facilisis utate velit esse molestie consequat</p>
+      </li>
+      <li class="col-md-3">
+        <h5>Qualified Doctors</h5>
+        <p>Duis autem vel eum iriure dolor in hendr erit in vulpt feugiat nulla facilisis utate velit esse molestie consequat</p>
+      </li>
+      <li class="col-md-3">
+        <h5>Emergency Services</h5>
+        <p>Duis autem vel eum iriure dolor in hendr erit in vulpt feugiat nulla facilisis utate velit esse molestie consequat</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+<!--======= Department =========-->
+
+
+<!--======= Blog =========-->
+<section class="blog">
+  <div class="container">
+    <ul class="row">
+      
+      <!-- Tittle -->
+      <li class="col-lg-4">
+        <div class="tittle">
+          <h2>Blog Updates</h2>
+        </div>
+      </li>
+      
+      <!-- Blog Post 1 -->
+      <li class="col-lg-8">
+        <div class="row">
+          <div class="col-md-6"> 
+            <!-- Post Image -->
+            <div class="post-img right"> <img class="img-responsive" src="/media/images/blog-img-1.jpg" alt="" > </div>
+          </div>
+          <!-- Post Text Sec -->
+          <div class="col-md-6 text-center">
+            <div class="text-section"> <a href="#.">The Hospital-Dependent Patient</a> <span>post by <strong>John Doe</strong> on <strong>April 5th, 2015</strong></span>
+              <hr>
+              <p>Claritas est etiam processus dynamicus, qui sequ itur mutationem consuetudium lectorum. Mirum est notare quam littera.</p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    
+    <!--======= Blog POST 2nd ROW =========-->
+    <ul class="row">
+      
+      <!-- Blog Post 2 -->
+      <li class="col-md-4"> 
+        <!-- Post Image -->
+        <div class="post-img up"> <img class="img-responsive" src="/media/images/blog-img-2.jpg" alt="" > </div>
+        <!-- Post Text Sec -->
+        <div class="col-md-12 text-section text-center"> <a href="#.">A Vital Measure: Your Surgeon’s Skill</a> <span>post by <strong>John Doe</strong> on <strong>April 5th, 2015</strong></span>
+          <hr>
+          <p>Claritas est etiam processus dynamicus, qui sequ itur mutationem consuetudium lectorum. Mirum est notare quam littera.</p>
+        </div>
+      </li>
+      
+      <!-- Blog Post 4 -->
+      <li class="col-md-4"> 
+        <!-- Post Text Sec -->
+        <div class="text-section text-center"> <a href="#.">Spending More and Getting Less for Health Care</a> <span>post by <strong>John Doe</strong> on <strong>April 5th, 2015</strong></span>
+          <hr>
+          <p>Claritas est etiam processus dynamicus, qui sequ itur mutationem consuetudium lectorum. Mirum est notare quam littera.</p>
+        </div>
+        <!-- Post Image -->
+        <div class="post-img down"> <img class="img-responsive" src="/media/images/blog-img-3.jpg" alt="" > </div>
+      </li>
+      
+      <!-- Blog Post 4 -->
+      <li class="col-md-4"> 
+        
+        <!-- Post Image -->
+        <div class="post-img up"> <img class="img-responsive" src="/media/images/blog-img-4.jpg" alt="" > </div>
+        
+        <!-- Post Text Sec -->
+        <div class="text-section text-center"> <a href="#.">Emergency Rooms Are No Place for the Elderly</a> <span>post by <strong>John Doe</strong> on <strong>April 5th, 2015</strong></span>
+          <hr>
+          <p>Claritas est etiam processus dynamicus, qui sequ itur mutationem consuetudium lectorum. Mirum est notare quam littera.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+<!--======= INTRO =========-->
+<section class="intro" style="background-color: #eee;">
+  <div class="container">
+    <div class="intro-in"> 
+      <!--Tittle-->
+      <div class="tittle">
+        <h3>We are a team of young 
+          professionals passionate in our work.</h3>
+      </div>
+      
+      <!--Text Section-->
+      <ul class="row">
+        <li class="col-md-6">
+          <p>Duis autem vel eum iriure dolor in hendrerit n vuew lputate velit esse molestie consequat, vel illum dolore eufe ugiat nulla facilisis at vero.</p>
+        </li>
+        <li class="col-md-6">
+          <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum seacula quarta decima quinta decima. </p>
+        </li>
+      </ul>
+      <a href="#." class="btn">Make an appoitment</a> <a href="#." class="btn btn-1">View timetable</a> </div>
+  </div>
+</section>
+
+<!--======= Contact Info =========-->
+<section class="contact-info">
+  <div class="container"> 
+    
+    <!--Address-->
+    <ul class="row">
+      <li class="col-md-3"> 
+        <h5>Address</h5>
+        <p>Sukrabad, Dhanmondi
+          Dhaka, Bangladesh</p>
+      </li>
+      
+      <!--Hot line-->
+      <li class="col-md-3"> 
+        <h5>Hotline</h5>
+        <p>+00-0122-123-0089</p>
+      </li>
+      
+      <!--Email Contact-->
+      <li class="col-md-3"> 
+        <h5>Email contact</h5>
+        <p>population.bd@gmail.com</p>
+      </li>
+      
+      <!--Website-->
+      <li class="col-md-3"> 
+        <h5>Website</h5>
+        <p>www.smarthealthbd.xyz</p>
+      </li>
+    </ul>
+  </div>
+</section>
+{% endblock content %}

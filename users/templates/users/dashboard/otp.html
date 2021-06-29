@@ -1,0 +1,11 @@
+{% extends 'users/dashboard/base.html' %}
+
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center my-3">
+        <form action="" method="post">
+            {% csrf_token %}
+    
+            <button type="submit" class="btn btn-warning">Generate OTP</button>
+        </form>
+    </div>
+{% endblock content %}

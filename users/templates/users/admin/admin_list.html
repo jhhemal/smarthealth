@@ -1,0 +1,50 @@
+{% extends 'users/admin/base.html' %}
+{% block content %}
+<h1 class="mt-4">Dashboard</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Dashboard</li>
+    <li class="breadcrumb-item active">Admins</li>
+</ol>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        All Admins
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Serial No</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Serial No</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for admin in admins %}
+                    <tr>
+                        <td>{{ admin.first_name }} {{ admin.last_name }}</td>
+                        <td>
+                            {% if admin.user_type == 4 %}
+                                Doctor Admin
+                            {% else %}
+                                Patient Admin
+                            {% endif %}
+                        </td>
+                        <td>{{ admin.sn }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

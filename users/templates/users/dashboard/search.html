@@ -1,0 +1,38 @@
+{% extends 'users/dashboard/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    
+    <div class="mx-auto my-4" style="width:90%">
+        <h2 class="text-center text-warning">Search Doctor</h2>
+        <br>
+            <form action="" method="get" class="w-50 mx-auto text-center p-3 shadow mb-2" style="background-color: #eee;">
+                {{ docFilter.form|crispy }}
+                <button type="submit" class="btn btn-warning ml-4">Search</button>
+            </form>
+            
+        <hr>
+        <h3 class="text-center text-priamry">Search Results</h3>
+        <div class="row">
+            
+        {% for doc in doctor %}
+            {% if request.user.id != doc.id %}
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card card-shadow text-center" style="width: 18rem;">
+                            <img style="height: 287px;" class="card-img-top" src="{{ doc.image.url }}" alt="Card image cap">
+                            <div class="card-body">
+                            <h4 class="card-title">{{ doc.first_name }} {{ doc.last_name }}</h4>
+                            <a href="{% url 'doctor-view' doc.id %}" class="btn btn-primary"><i class="fas fa-user"></i>View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+        
+    </div>
+    {% endblock content %}

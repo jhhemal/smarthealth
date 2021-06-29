@@ -1,0 +1,11 @@
+{% extends 'users/dashboard/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h3 class="text-center text-warning">Update Schedule</h3>
+    <form action="" method="post" class="my-3 p-3 w-75 mx-auto shadow" style="background-color: #eee;">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-warning">Submit</button>
+        <a href="{% url 'user-profile' request.user.id %}" class="btn btn-primary">Back To Profile</a>
+    </form>
+{% endblock content %}

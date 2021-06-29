@@ -1,0 +1,8 @@
+{% extends 'users/dashboard/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center my-5">
+    <a href="{% url 'doctor-reg' %}" class="btn btn-warning mr-2">Register as Doctor</a>
+    <a href="{% url 'user-reg' %}" class="btn btn-primary">Register as Patient</a>
+</div>
+{% endblock content %}
